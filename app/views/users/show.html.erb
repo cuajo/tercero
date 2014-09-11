@@ -6,17 +6,31 @@
         <ul>
             <%= content_tag(:li, ("Name: " + @user.name)) unless @user.name.blank? %>
             <%= content_tag(:li, ("Age: " + distance_of_time_in_words(Time.now, @user.date_of_birth) + " old")) unless @user.date_of_birth.blank? %>
+
         </ul>
-
-
-
-
-
     </div>
-    <div class="feed">
-        <h3>Posts</h3>
 
-        <p><%= @post.body %></p>
+    <div class="feed">
+       
+        
+        
+        <% @user.posts.each do |p| %>
+            <%= p.user_id %>
+
+            <% if p.user_id == @user.id %>
+            
+            <li>
+                <h3><%= link_to p.title, post_path(p.id) %></h3>
+                <p><%= p.body %></p>
+                <p><small><strong>By: </strong><%= p.user.email %></small></p>
+            </li>
+            <% end%>
+        <% end %>
+        
+    </ul>
+
+
+
     </div>
 </div>
 
