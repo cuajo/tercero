@@ -20,10 +20,20 @@
             <% if p.user_id == @user.id %>
             
             <li>
+                
                 <h3><%= link_to p.title, post_path(p.id) %></h3>
                 <p><%= p.body %></p>
                 <p><small><strong>By: </strong><%= p.user.email %></small></p>
+                <%if 
+                    <% p.increment!(:like, 1) %>
+                    <%= p.like %>
+
             </li>
+            <%= link_to 'like', user_path %>
+                <%= link_to 'unlike', user_path %>
+                
+
+
             <% end%>
         <% end %>
         

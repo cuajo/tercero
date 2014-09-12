@@ -3,6 +3,14 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   before_filter :find_post, only: [:show, :edit, :update, :destroy]
 
+
+    
+    @post.like=123
+    
+
+      
+  
+
   def index
     @posts = Post.all
   end
